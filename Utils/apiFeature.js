@@ -1,4 +1,5 @@
-import { ethers } from "ethers";
+import { ethers } from "ethers";  // For Contract and other ethers-related functionality
+import { Web3Provider } from "@ethersproject/providers";  // For Web3Provider in ethers v6
 import Web3Modal from "web3modal";
 import { chatAppAddress, chatAppAbi } from "@/Context/Constant";
 
@@ -48,14 +49,12 @@ export const connectingWithContract = async () => {
         await window.ethereum.request({ method: "eth_requestAccounts" });
         
         // Create a provider connected to MetaMask
-        const provider = new ethers.providers.Web3Provider(window.ethereum);
+        const provider = new Web3Provider(window.ethereum);  // Fix: Correct import for v6
         
         // Get the signer to sign transactions
         const signer = provider.getSigner();
-        // console.log(chatAppAbi)
         // Connect to the contract with the signer
         const contract = new ethers.Contract(chatAppAddress, chatAppAbi, signer);
-        // console.log("jasdnfbj")
         return contract;
     } catch (error) {
         console.error("Error connecting to the contract:", error);
@@ -64,7 +63,9 @@ export const connectingWithContract = async () => {
 
 // Utility function to convert time
 export const convertTime = (time) => {
-    const newTime = new Date(time.toNumber() * 1000);
+    // Convert `time` to Number if it's a BigInt
+    const timeInMilliseconds = Number(time) * 1000;
+    const newTime = new Date(timeInMilliseconds);
     const formattedTime = 
         newTime.getHours().toString().padStart(2, '0') + ":" +
         newTime.getMinutes().toString().padStart(2, '0') + ":" +
@@ -72,6 +73,8 @@ export const convertTime = (time) => {
         newTime.getDate().toString().padStart(2, '0') + "/" +
         (newTime.getMonth() + 1).toString().padStart(2, '0') + "/" +
         newTime.getFullYear();
-        
+    
     return formattedTime;
 };
+
+
