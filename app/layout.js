@@ -1,5 +1,9 @@
+// "use client"
 import localFont from "next/font/local";
 import "./globals.css";
+import { ChatAppProvider } from "@/Context/ChatAppContext";
+import { Navbar } from "@/Components";
+
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -18,12 +22,16 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+
   return (
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
+      ><ChatAppProvider> 
+      <Navbar/> 
+       {children}
+      </ChatAppProvider>
+      
       </body>
     </html>
   );

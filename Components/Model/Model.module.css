@@ -1,0 +1,109 @@
+/* Main Modal Container */
+.Modal {
+    width: 85%;
+    margin: 1rem auto;
+}
+
+.Modal_box {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    align-items: center;
+    position: fixed;
+    inset: 0;
+    background-color: #292F3F;
+    z-index: 7777;
+    padding: 2rem;
+    box-sizing: border-box;
+}
+
+/* Left Image Container */
+.Modal_box_left img {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+}
+
+/* Right Content Area */
+.Modal_box_right h1 {
+    font-size: 3rem;
+    color: #F18303;
+    line-height: 1;
+}
+
+.Modal_box_right h1 span {
+    display: block;
+    font-size: 5rem;
+}
+
+.Modal_box_right p {
+    margin: 1rem 0;
+}
+
+.Modal_box_right small {
+    font-size: 1.2rem;
+    color: #F18303;
+}
+
+/* Name & Address Input */
+.Modal_box_right_name_info {
+    display: flex;
+    align-items: center;
+    margin-block: 1rem;
+    gap: 1rem;
+    background-color: rgba(0, 0, 0, 0.25);
+    padding: 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+}
+
+.Modal_box_right_name_info input {
+    width: 100%;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color: #F18303;
+}
+
+/* Button Styles */
+.Modal_box_right_name_btn {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.Modal_box_right_name_btn button {
+    background-color: rgba(0, 0, 0, 0.25);
+    outline: none;
+    border: none;
+    color: #F18303;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    cursor: pointer;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 35em) {
+    .Modal {
+        width: 95%;
+    }
+    .Modal_box {
+        grid-template-columns: 1fr;
+        padding: 1rem;
+    }
+    .Modal_box_right h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+    .Modal_box_right h1 span {
+        font-size: 3rem;
+    }
+    .Modal_box_right_name_btn {
+        grid-template-columns: 1fr;
+    }
+}
